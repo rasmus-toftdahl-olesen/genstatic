@@ -4,6 +4,7 @@ import os
 import shutil
 import sys
 from optparse import OptionParser
+import codecs
 
 #: Default file name extensions
 EXTENSIONS = [
@@ -114,7 +115,7 @@ def dj_render(path, dest, params=None):
     if not params:
         params = {}
     rendered = render_to_string(path, params)
-    with open(dest, 'w') as outf:
+    with codecs.open(dest, 'w', 'utf-8') as outf:
         outf.write(rendered)
         
 def mkdir(path):
